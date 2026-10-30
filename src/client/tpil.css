@@ -1,0 +1,320 @@
+/* Styles for the interactive layer. Colors follow the book's message palette. */
+
+:root {
+  --tpil-accent: #2563eb;
+  --tpil-border: #d4d4d8;
+  --tpil-muted: #71717a;
+  --tpil-bg: #fafafa;
+  --tpil-good: #15803d;
+  --tpil-bad: #b91c1c;
+  --tpil-todo: #a16207;
+}
+
+/* --- Familiar passages --- */
+
+details.tpil-familiar {
+  margin: 0.6em 0;
+  border-left: 3px solid #e4e4e7;
+  padding-left: 0.75em;
+}
+details.tpil-familiar > summary {
+  cursor: pointer;
+  color: var(--tpil-muted);
+  font-family: var(--verso-structure-font-family);
+  font-size: 0.9em;
+  list-style: none;
+  padding: 0.15em 0;
+}
+details.tpil-familiar > summary::-webkit-details-marker { display: none; }
+details.tpil-familiar > summary::before {
+  content: "▸";
+  display: inline-block;
+  width: 1em;
+  transition: transform 0.1s;
+}
+details.tpil-familiar[open] > summary::before { transform: rotate(90deg); }
+details.tpil-familiar > summary:hover { color: #3f3f46; }
+.tpil-familiar-label {
+  font-weight: 600;
+  font-size: 0.85em;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-right: 0.4em;
+}
+.tpil-familiar-count { opacity: 0.8; }
+details.tpil-familiar[open] { border-left-color: #a1a1aa; }
+
+/* --- Status bar --- */
+
+.tpil-bar {
+  position: fixed;
+  right: 1em;
+  bottom: 1em;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  background: white;
+  border: 1px solid var(--tpil-border);
+  border-radius: 999px;
+  padding: 0.35em 0.5em 0.35em 0.9em;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 0.08);
+  font-family: var(--verso-structure-font-family);
+  font-size: 0.8rem;
+}
+.tpil-bar-label { color: #3f3f46; }
+.tpil-dot {
+  width: 0.6em;
+  height: 0.6em;
+  border-radius: 50%;
+  background: #a1a1aa;
+}
+.tpil-dot[data-state="ready"] { background: #22c55e; }
+.tpil-dot[data-state="connecting"] { background: #eab308; }
+.tpil-dot[data-state="disconnected"] { background: #ef4444; }
+
+/* --- Buttons --- */
+
+.tpil-button {
+  font: inherit;
+  font-family: var(--verso-structure-font-family);
+  font-size: 0.78rem;
+  border: 1px solid var(--tpil-border);
+  background: white;
+  border-radius: 6px;
+  padding: 0.15em 0.6em;
+  cursor: pointer;
+  color: #27272a;
+}
+.tpil-button:hover { border-color: #a1a1aa; background: #f4f4f5; }
+
+.example.tpil-runnable { position: relative; }
+.example .tpil-run {
+  position: absolute;
+  top: 0.25em;
+  right: 2.5em;
+  z-index: 2;
+  color: var(--tpil-accent);
+  border-color: #bfdbfe;
+  opacity: 0.85;
+}
+.example .tpil-run:hover { opacity: 1; background: #eff6ff; }
+
+/* --- Live editors --- */
+
+.tpil-live {
+  margin: 0.75em 0 1em 0.75em;
+  border: 1px solid var(--tpil-border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+}
+.tpil-live.tpil-exercise { border-color: #fcd34d; }
+.tpil-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.45em;
+  padding: 0.3em 0.5em;
+  background: var(--tpil-bg);
+  border-bottom: 1px solid var(--tpil-border);
+  font-family: var(--verso-structure-font-family);
+  font-size: 0.8rem;
+}
+.tpil-spacer { flex: 1; }
+.tpil-tag {
+  font-weight: 600;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #92400e;
+  background: #fef3c7;
+  border-radius: 4px;
+  padding: 0.05em 0.45em;
+}
+.tpil-status { color: var(--tpil-muted); }
+.tpil-status.running { color: var(--tpil-accent); }
+.tpil-status.good { color: var(--tpil-good); font-weight: 600; }
+.tpil-status.bad { color: var(--tpil-bad); font-weight: 600; }
+.tpil-status.todo { color: var(--tpil-todo); font-weight: 600; }
+
+.tpil-context { font-size: 0.8rem; border-bottom: 1px solid #eee; }
+.tpil-context > summary {
+  cursor: pointer;
+  color: var(--tpil-muted);
+  padding: 0.2em 0.6em;
+  font-family: var(--verso-structure-font-family);
+}
+.tpil-context > pre {
+  margin: 0;
+  padding: 0.4em 0.8em;
+  background: #f4f4f5;
+  color: #52525b;
+  max-height: 16em;
+  overflow: auto;
+}
+
+.tpil-cm .cm-editor { font-size: 0.92em; }
+.tpil-cm .cm-editor.cm-focused { outline: none; }
+.tpil-cm .cm-content, .tpil-cm .cm-gutters { font-family: var(--verso-code-font-family); }
+.tpil-cm .cm-gutters { background: white; border-right: 1px solid #f0f0f0; color: #a1a1aa; }
+.tpil-cm .cm-scroller { max-height: 70vh; }
+
+.tpil-underline.error { text-decoration: underline wavy #dc2626; text-underline-offset: 3px; }
+.tpil-underline.warning { text-decoration: underline wavy #d97706; text-underline-offset: 3px; }
+
+.tpil-messages { padding: 0.15em 0 0.25em 0; }
+.tpil-message {
+  margin: 0.15em 0.5em;
+  padding: 0.1em 0.5em;
+  border-left: 0.2em solid #3b82f6;
+  white-space: pre-wrap;
+  font-size: 0.92em;
+  font-family: var(--verso-code-font-family);
+  background: #f8fafc;
+}
+.tpil-message.error { border-color: #dc2626; background: #fef2f2; }
+.tpil-message.warning { border-color: #d97706; background: #fffbeb; }
+.tpil-hidden-errors:empty { display: none; }
+
+.tpil-goals {
+  border-top: 1px solid var(--tpil-border);
+  background: #f8fafc;
+  padding: 0.35em 0.6em 0.5em;
+}
+.tpil-goals-title {
+  font-family: var(--verso-structure-font-family);
+  font-size: 0.75rem;
+  color: var(--tpil-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.25em;
+}
+.tpil-goal {
+  margin: 0.25em 0;
+  padding: 0.3em 0.6em;
+  background: white;
+  border: 1px solid #e4e4e7;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  font-size: 0.9em;
+}
+.tpil-goal-done { color: var(--tpil-good); font-size: 0.9em; }
+
+.tpil-hover {
+  max-width: 40em;
+  max-height: 20em;
+  overflow: auto;
+  padding: 0.3em 0.6em;
+  font-size: 0.85rem;
+}
+.tpil-hover pre { margin: 0.2em 0; white-space: pre-wrap; }
+.tpil-hover p { margin: 0.3em 0; }
+
+.tpil-scratch-note {
+  font-size: 0.85em;
+  color: var(--tpil-muted);
+  margin: 0.25em 0 0 0.75em;
+}
+
+/* --- Franklin drills --- */
+
+.tpil-bar-link {
+  color: var(--tpil-accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+.tpil-bar-link:hover { text-decoration: underline; }
+
+/* While a drill is open the book is "closed": its code is blurred until you compare. */
+body.tpil-book-closed main .example,
+body.tpil-book-closed main .tpil-live,
+body.tpil-book-closed main .proof-state-view,
+body.tpil-book-closed main p code,
+body.tpil-book-closed main li code {
+  filter: blur(5px);
+  pointer-events: none;
+  user-select: none;
+}
+body.tpil-book-closed main .tpil-drill code { filter: none; pointer-events: auto; user-select: auto; }
+
+.tpil-drill-panel {
+  margin: 1.5em 0 1.5em 0.75em;
+  padding: 0.6em 0.8em 0.8em;
+  border: 1px solid #c7d2fe;
+  background: #f5f7ff;
+  border-radius: 8px;
+  font-family: var(--verso-structure-font-family);
+}
+.tpil-drill-panel-head {
+  font-weight: 600;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #3730a3;
+}
+.tpil-drill-panel-blurb { font-size: 0.85rem; color: #52525b; margin: 0.3em 0 0.6em; }
+
+.tpil-drill {
+  background: white;
+  border: 1px solid var(--tpil-border);
+  border-radius: 6px;
+  margin: 0.4em 0;
+  font-family: var(--verso-structure-font-family);
+}
+.tpil-drill-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 0.35em 0.6em;
+  font-size: 0.88rem;
+}
+.tpil-drill-title { font-weight: 600; color: #27272a; }
+.tpil-drill-where { color: var(--tpil-muted); font-size: 0.8rem; font-weight: normal; }
+.tpil-drill-sched { font-size: 0.75rem; color: var(--tpil-muted); }
+.tpil-drill-sched[data-state="due"] { color: #b45309; font-weight: 600; }
+.tpil-drill-sched[data-state="new"] { color: #4338ca; }
+.tpil-drill-body { border-top: 1px solid #eee; padding: 0.4em 0.6em 0.6em; }
+.tpil-drill-hints { margin: 0.2em 0 0.6em; padding-left: 1.4em; font-size: 0.9rem; line-height: 1.45; }
+.tpil-drill-hints li { margin: 0.15em 0; }
+.tpil-drill-editor { border: 1px solid var(--tpil-border); border-radius: 6px; overflow: hidden; }
+.tpil-drill-editor .cm-editor { min-height: 6em; }
+.tpil-drill-actions { display: flex; gap: 0.5em; margin-top: 0.5em; }
+.tpil-button.tpil-primary { border-color: #a5b4fc; color: #3730a3; background: #eef2ff; }
+.tpil-drill-compare { margin-top: 0.6em; }
+.tpil-drill-verdict { font-size: 0.85rem; margin-bottom: 0.3em; }
+.tpil-drill-verdict .good { color: var(--tpil-good); font-weight: 600; }
+.tpil-drill-verdict .bad { color: var(--tpil-bad); font-weight: 600; }
+.tpil-diff {
+  margin: 0;
+  padding: 0.4em 0.6em;
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  white-space: pre-wrap;
+  font-family: var(--verso-code-font-family);
+}
+.tpil-diff-book { background: #fee2e2; color: #991b1b; display: block; }
+.tpil-diff-yours { background: #dcfce7; color: #166534; display: block; }
+.tpil-diff-same { color: #52525b; display: block; }
+.tpil-drill-syntax { font-size: 0.8rem; color: var(--tpil-muted); margin-top: 0.35em; }
+.tpil-drill-grade { display: flex; align-items: center; gap: 0.5em; margin-top: 0.6em; font-size: 0.85rem; }
+.tpil-grade-missed { color: var(--tpil-bad); }
+.tpil-grade-partly { color: var(--tpil-todo); }
+.tpil-grade-recalled { color: var(--tpil-good); }
+
+.tpil-deck-summary { font-family: var(--verso-structure-font-family); color: #3f3f46; }
+.tpil-deck-blurb { font-size: 0.9rem; color: #52525b; }
+.tpil-deck-chapter { margin: 0.3em 0; }
+.tpil-deck-chapter > summary { cursor: pointer; font-family: var(--verso-structure-font-family); padding: 0.2em 0; }
+.tpil-deck-mastery { font-family: var(--verso-structure-font-family); font-size: 0.9rem; margin-bottom: 1em; }
+.tpil-deck-mastery > summary { cursor: pointer; }
+.tpil-feature-list { display: flex; flex-wrap: wrap; gap: 0.3em; margin-top: 0.4em; }
+.tpil-feature {
+  font-size: 0.75rem;
+  padding: 0.1em 0.45em;
+  border-radius: 4px;
+  background: #f4f4f5;
+  color: #71717a;
+}
+.tpil-feature.ok { background: #dcfce7; color: #166534; }

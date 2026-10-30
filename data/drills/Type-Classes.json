@@ -1,0 +1,78 @@
+{
+  "page": "Type-Classes",
+  "drills": [
+    {
+      "index": 2,
+      "title": "A type class for addition",
+      "hints": [
+        "Declare a type class `Add` over α : Type, with a single method add : α → α → α.",
+        "Check the type of Add.add with all its arguments made explicit."
+      ]
+    },
+    {
+      "index": 5,
+      "title": "Adding arrays elementwise",
+      "hints": [
+        "Declare an anonymous instance: whenever α has Add, so does Array α.",
+        "Its add on x and y is Array.zipWith applied to addition (as an anonymous two-argument function in placeholder shorthand), x and y.",
+        "Evaluate Add.add on the array literals containing 1, 2 and 3, 4.",
+        "Evaluate the same sum written with +."
+      ]
+    },
+    {
+      "index": 8,
+      "title": "Exporting the default value",
+      "hints": [
+        "Export `default` from Inhabited so that it can be used unqualified.",
+        "Evaluate default at type Nat, then at type Bool."
+      ]
+    },
+    {
+      "index": 22,
+      "title": "A default instance for multiplication",
+      "hints": [
+        "Declare a type class `HMul` over α : Type u, β : Type v and an output parameter γ : Type w, with a single method hMul : α → β → γ.",
+        "Export hMul from HMul.",
+        "Declare an anonymous instance of HMul Int Int Int, with hMul being Int.mul, and mark it as a default instance.",
+        "Define `xs : List Int` as the list 1, 2, 3.",
+        "Check the type of a lambda over y that maps over xs, sending each x to hMul x y."
+      ]
+    },
+    {
+      "index": 35,
+      "title": "Classical decidability as a fallback instance",
+      "hints": [
+        "Open Classical.",
+        "Declare a noncomputable, scoped instance named `propDecidable` with low priority, giving Decidable a for any a : Prop.",
+        "Its value is choice applied, without parenthesising the argument, to a match on em a.",
+        "In the Or.inl h case, wrap isTrue h into a Nonempty using the anonymous constructor.",
+        "In the Or.inr h case, likewise wrap isFalse h."
+      ]
+    },
+    {
+      "index": 43,
+      "title": "Coercing Bool to Prop",
+      "hints": [
+        "Declare an anonymous instance of Coe from Bool to Prop.",
+        "Its coe sends b to the proposition b = true."
+      ]
+    },
+    {
+      "index": 47,
+      "title": "Coercing decidable propositions to Bool",
+      "hints": [
+        "Declare an anonymous instance, for any p : Prop with a Decidable p instance, of CoeDep Prop p Bool.",
+        "Its coe is decide p."
+      ]
+    },
+    {
+      "index": 1,
+      "title": "Passing addition around by hand",
+      "hints": [
+        "Define `double`, taking s : Add α (α left auto-bound) and x : α, returning an α: s's add field (by dot notation) applied to x and x.",
+        "Evaluate double on 10, passing an Add structure built inline whose add field is Nat.add.",
+        "Do the same with add set to Nat.mul, then with add set to Int.add."
+      ]
+    }
+  ]
+}

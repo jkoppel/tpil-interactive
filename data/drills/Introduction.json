@@ -1,0 +1,16 @@
+{
+  "page": "Introduction",
+  "drills": [
+    {
+      "index": 0,
+      "title": "Conjunction is commutative",
+      "hints": [
+        "Theorem `and_commutative`: for propositions p and q taken as parameters, p ∧ q → q ∧ p, proved as a term.",
+        "Take the hypothesis `hpq : p ∧ q` by a lambda, annotating its type.",
+        "Introduce a local fact `hp : p`, obtained from hpq with And.left.",
+        "Introduce a local fact `hq : q`, obtained from hpq with And.right.",
+        "Finish by stating explicitly that the result proves q ∧ p, justified by And.intro applied to hq and hp."
+      ]
+    }
+  ]
+}

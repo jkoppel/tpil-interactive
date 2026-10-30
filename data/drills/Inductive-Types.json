@@ -1,0 +1,124 @@
+{
+  "page": "Inductive-Types",
+  "drills": [
+    {
+      "index": 18,
+      "title": "An RGB color record",
+      "hints": [
+        "Structure Color with three Nat fields red, green, blue, deriving Repr.",
+        "Define yellow by applying Color's default constructor to 255, 255, 0.",
+        "Evaluate the projection Color.red, applied as an ordinary function to yellow."
+      ]
+    },
+    {
+      "index": 20,
+      "title": "Dependent pairs as an inductive type",
+      "hints": [
+        "Inductive type Sigma with an implicit parameter α : Type u and an explicit parameter β : α → Type v.",
+        "Its single constructor mk, with its type written out as a dependent arrow: given a : α and an element of β a, it produces Sigma β."
+      ]
+    },
+    {
+      "index": 41,
+      "title": "Countably branching trees",
+      "hints": [
+        "Inductive type CBTree with two constructors: leaf, and sup, which takes a function from Nat to CBTree.",
+        "Open the namespace CBTree.",
+        "Define succ of t : CBTree as sup applied to the constant function returning t, ignoring its argument.",
+        "Define toCBTree : Nat → CBTree by equations: 0 goes to leaf, and n+1 goes to succ of toCBTree n.",
+        "Define omega : CBTree as sup applied to toCBTree.",
+        "Close the namespace."
+      ]
+    },
+    {
+      "index": 55,
+      "title": "Zero is a left identity, by induction",
+      "hints": [
+        "Theorem zero_add: for n : Nat, 0 + n = n, in tactic mode.",
+        "Induct on n, giving the cases as named alternatives attached directly to the induction tactic.",
+        "zero alternative: close by rfl.",
+        "succ alternative, naming the predecessor n and the induction hypothesis ih: rewrite with Nat.add_succ and then ih."
+      ]
+    },
+    {
+      "index": 56,
+      "title": "Zero is a left identity, case by case",
+      "hints": [
+        "Theorem zero_add: for n : Nat, 0 + n = n, in tactic mode.",
+        "Induct on n, with nothing attached to the induction tactic.",
+        "Address the zero goal by its tag and close it by rfl.",
+        "Address the succ goal by its tag, naming the predecessor n and the induction hypothesis ih; rewrite with Nat.add_succ and then ih."
+      ]
+    },
+    {
+      "index": 59,
+      "title": "Remainder is below the divisor",
+      "hints": [
+        "Anonymous example: for x : Nat, implicit y : Nat, and h : y > 0, prove x % y < y, in tactic mode.",
+        "Induct on x and y together using the custom induction principle Nat.mod.inductionOn, with named alternatives attached to the tactic.",
+        "ind alternative, binding x, y, h₁, ih: rewrite with Nat.mod_eq_sub_mod applied to the second component of h₁.",
+        "Then close it exactly with ih applied to h.",
+        "base alternative, binding x, y, h₁: have an unnamed fact ¬ 0 < y ∨ ¬ y ≤ x, given by Iff.mp of Decidable.not_and_iff_or_not (eliding all its explicit arguments at once), applied to h₁.",
+        "Pattern-match on that unnamed fact.",
+        "Left case, naming its hypothesis h₁: close exactly with absurd applied to h and h₁.",
+        "Right case, also naming its hypothesis h₁: have hgt : y > x from Nat.gt_of_not_le h₁.",
+        "Rewrite inside hgt, right to left, with Nat.mod_eq_of_lt hgt (turning it into y > x % y).",
+        "Close the goal with the assumption tactic."
+      ]
+    },
+    {
+      "index": 61,
+      "title": "Destructuring in intro and funext",
+      "hints": [
+        "Anonymous example in tactic mode: s ∧ q ∧ r → p ∧ r → q ∧ p (with p, q, r, s auto-bound).",
+        "Introduce both hypotheses, destructuring them in the intro itself: from the first keep only the proof hq of q, ignoring the rest; from the second keep only hp, ignoring the rest.",
+        "Close the goal exactly with the pair built directly from hq and hp.",
+        "Second anonymous example in tactic mode: the function of x, y : Nat × Nat returning x's first component plus y's second equals the function of x, z : Nat × Nat returning z's second component plus x's first.",
+        "Apply function extensionality, destructuring the first argument into a and b and the second into c and d.",
+        "Restate the goal as a + d = d + a.",
+        "Rewrite with Nat.add_comm."
+      ]
+    },
+    {
+      "index": 62,
+      "title": "Successor is injective",
+      "hints": [
+        "Open the Nat namespace.",
+        "Anonymous example: for m n k : Nat and h : succ (succ m) = succ (succ n), prove n + k = m + k, in tactic mode.",
+        "Use injection on h, naming the resulting equation h'.",
+        "Use injection on h', naming the resulting equation h''.",
+        "Rewrite with h''."
+      ]
+    },
+    {
+      "index": 63,
+      "title": "Closing goals from constructor clashes",
+      "hints": [
+        "Open the Nat namespace.",
+        "Anonymous example: for m n : Nat and h : succ m = 0, prove n = n + 7, in tactic mode, using only injection on h.",
+        "The same example again, this time closed by the contradiction tactic.",
+        "Anonymous example: from h : 7 = 4 prove False, by the contradiction tactic."
+      ]
+    },
+    {
+      "index": 71,
+      "title": "Mutually inductive even and odd",
+      "hints": [
+        "Open a block of mutually defined inductive types.",
+        "Even : Nat → Prop, with constructors even_zero proving Even 0, and even_succ taking a named n : Nat and a proof of Odd n to give Even (n + 1).",
+        "Odd : Nat → Prop, with one constructor odd_succ taking a named n : Nat and a proof of Even n to give Odd (n + 1).",
+        "Close the block."
+      ]
+    },
+    {
+      "index": 72,
+      "title": "Mutually inductive trees and tree lists",
+      "hints": [
+        "Open a block of mutually defined inductive types.",
+        "Tree, parameterised by α : Type u, with one constructor node taking an α and a TreeList α.",
+        "TreeList, parameterised by α : Type u, with constructors nil, and cons taking a Tree α and a TreeList α.",
+        "Close the block."
+      ]
+    }
+  ]
+}

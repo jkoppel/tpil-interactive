@@ -1,0 +1,59 @@
+{
+  "page": "Dependent-Type-Theory",
+  "collapse": [
+    {
+      "start": "b11",
+      "end": "b11",
+      "summary": "application syntax, right-associative arrows, currying and partial application",
+      "startsWith": "There are a few more things to notice he"
+    },
+    {
+      "start": "b13",
+      "end": "b13",
+      "summary": "types are first-class objects and so have types",
+      "startsWith": "One way in which Lean's dependent type t"
+    },
+    {
+      "start": "b43",
+      "end": "b43",
+      "summary": "lambda abstraction: from t : β to a function α → β",
+      "startsWith": "Creating a function from another express"
+    },
+    {
+      "start": "b54",
+      "end": "b54",
+      "summary": "reading the type-polymorphic composition function",
+      "startsWith": "The last expression, for example, denote"
+    },
+    {
+      "start": "b55",
+      "end": "b56",
+      "summary": "bound variables, scope, and alpha equivalence",
+      "startsWith": "The general form of a lambda expression "
+    },
+    {
+      "start": "b61",
+      "end": "b61",
+      "summary": "normalization and definitional equality",
+      "startsWith": "You will see later how these terms are e"
+    },
+    {
+      "start": "b86",
+      "end": "b88",
+      "summary": "how compose's argument types line up for composition",
+      "startsWith": "This means compose is a function that ta"
+    },
+    {
+      "start": "b129",
+      "end": "b131",
+      "summary": "types depending on parameters; motivating a dependent type for cons",
+      "startsWith": "The short explanation is that types can "
+    },
+    {
+      "start": "b144",
+      "end": "b144",
+      "summary": "explicit type arguments are redundant and inferable",
+      "startsWith": "Because the constructors are polymorphic"
+    }
+  ]
+}

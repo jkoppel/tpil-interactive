@@ -1,0 +1,156 @@
+{
+  "page": "Tactics",
+  "drills": [
+    {
+      "index": 7,
+      "title": "Structured And-proof with case tags",
+      "hints": [
+        "Theorem `test`: for propositions p, q, from hypotheses hp : p and hq : q prove p ∧ (q ∧ p), in tactic mode.",
+        "Split the outer conjunction by applying And.intro.",
+        "Address the left subgoal by its tag and close it exactly with hp.",
+        "Address the right subgoal by its tag: split it again with And.intro, then close its left and right subgoals, each addressed by tag, exactly with hq and hp."
+      ]
+    },
+    {
+      "index": 9,
+      "title": "Structured And-proof with bullets",
+      "hints": [
+        "Theorem `test`: for propositions p, q, from hp : p and hq : q prove p ∧ (q ∧ p), in tactic mode.",
+        "Split the outer conjunction by applying And.intro.",
+        "Focus the first subgoal with a bullet and close it exactly with hp.",
+        "Focus the second subgoal with a bullet: apply And.intro again, then close its two subgoals with nested bullets, exactly with hq and hp."
+      ]
+    },
+    {
+      "index": 22,
+      "title": "Reverting and reintroducing a variable",
+      "hints": [
+        "Anonymous example: for x : Nat, prove x = x, in tactic mode.",
+        "Revert x, moving it back into the goal.",
+        "Introduce it again under the new name y.",
+        "Close the goal by reflexivity."
+      ]
+    },
+    {
+      "index": 28,
+      "title": "Generalizing a constant and restoring it",
+      "hints": [
+        "Anonymous example: prove 2 + 3 = 5, in tactic mode.",
+        "Generalize 3 to a fresh variable x, recording the equation 3 = x in a hypothesis named h.",
+        "Rewrite with h right to left, which puts 3 back and closes the goal."
+      ]
+    },
+    {
+      "index": 32,
+      "title": "Closing both disjunction cases at once",
+      "hints": [
+        "Anonymous example: for a proposition p, prove p ∨ p → p, in tactic mode.",
+        "Introduce the hypothesis as h.",
+        "Do an unstructured case split on h.",
+        "Close all resulting goals by repeating assumption."
+      ]
+    },
+    {
+      "index": 38,
+      "title": "Supplying an explicit existential witness",
+      "hints": [
+        "Anonymous example: for predicates p, q on Nat, prove (∃ x, p x) → ∃ x, p x ∨ q x, in tactic mode.",
+        "Introduce the hypothesis as h.",
+        "Case on h with a named alternative for its constructor intro, binding x and px.",
+        "In that alternative, all on one line: give x as the witness using the exists tactic, apply Or.inl, then close exactly with px."
+      ]
+    },
+    {
+      "index": 39,
+      "title": "Destructuring nested existential and conjunction",
+      "hints": [
+        "Anonymous example: for predicates p, q on Nat, prove (∃ x, p x ∧ q x) → ∃ x, q x ∧ p x, in tactic mode.",
+        "Introduce the hypothesis as h.",
+        "Case on h with the named alternative for constructor intro, binding x and hpq.",
+        "Inside it, case on hpq with the named alternative for constructor intro, binding hp and hq.",
+        "Inside that, finish with the exists tactic giving witness x; it discharges the remaining conjunction by itself."
+      ]
+    },
+    {
+      "index": 53,
+      "title": "Distributing and over or, brace-structured",
+      "hints": [
+        "Anonymous example: for propositions p, q, r, prove p ∧ (q ∨ r) ↔ (p ∧ q) ∨ (p ∧ r), in tactic mode, structuring every subproof with curly-brace blocks and separating tactics with semicolons.",
+        "Apply Iff.intro.",
+        "Forward block: introduce h, then do an unstructured case split on the right component of h.",
+        "Forward, each of the two sub-blocks: state the goal (p ∧ q) ∨ (p ∧ r) with show, then close exactly with the left (resp. right) injection of the pair made of h's left component and the anonymous hypothesis q (resp. r), referred to by its type.",
+        "Backward block: introduce h, then do an unstructured case split on h.",
+        "Backward, each of the two sub-blocks: state the goal p ∧ (q ∨ r) with show, name the inaccessible hypothesis hpq (resp. hpr) using rename_i, then close exactly with the pair of its left component and Or.inl (resp. Or.inr) of its right component."
+      ]
+    },
+    {
+      "index": 58,
+      "title": "One-line conjunction proof with try",
+      "hints": [
+        "Anonymous example: for propositions p, q, r with hp : p, hq : q, hr : r, prove p ∧ q ∧ r, in tactic mode, in one line.",
+        "Apply constructor; then, on every goal it produces, try constructor (parenthesised); then, on every goal that produces, use assumption. Chain these with the combinator that runs the next tactic on all goals produced by the previous one."
+      ]
+    },
+    {
+      "index": 59,
+      "title": "Applying tactics to all goals",
+      "hints": [
+        "Anonymous example: for propositions p, q, r with hp : p, hq : q, hr : r, prove p ∧ q ∧ r, in tactic mode.",
+        "Apply constructor.",
+        "On all open goals, try constructor (parenthesised).",
+        "On all open goals, use assumption."
+      ]
+    },
+    {
+      "index": 62,
+      "title": "Proving a nested conjunction in one line",
+      "hints": [
+        "Anonymous example: for propositions p, q, r with hp : p, hq : q, hr : r, prove p ∧ ((p ∧ q) ∧ r) ∧ (q ∧ r ∧ p), in tactic mode.",
+        "In a single line: repeatedly, on any goals, try first constructor and, if that fails, assumption (parenthesise each layer)."
+      ]
+    },
+    {
+      "index": 69,
+      "title": "Rewriting the type of a hypothesis",
+      "hints": [
+        "Define Tuple, taking α : Type and n : Nat, as the subtype of lists as : List α whose length equals n.",
+        "Anonymous example: for n : Nat, h : n = 0 and t : Tuple α n (leave α auto-bound), produce a Tuple α 0, in tactic mode.",
+        "Rewrite with h in the hypothesis t.",
+        "Close exactly with t."
+      ]
+    },
+    {
+      "index": 73,
+      "title": "Simplifying hypotheses and goal together",
+      "hints": [
+        "Locally add Nat.mul_comm, Nat.mul_assoc and Nat.mul_left_comm to the simp set.",
+        "In a second line, likewise locally add Nat.add_assoc, Nat.add_comm and Nat.add_left_comm.",
+        "Anonymous example: for w x y z : Nat, a predicate p on Nat, and h : p (x * y + z * w * x), prove p (x * w * z + y * x), in tactic mode.",
+        "On one line: simplify at every hypothesis and the goal, then finish with assumption.",
+        "Anonymous example: for x y z : Nat, a predicate p on Nat, h₁ : p (1 * x + y) and h₂ : p (x * z * 1), prove p (y + 0 + x) ∧ p (z * x), in tactic mode.",
+        "On one line: simplify everywhere, then constructor on every resulting goal, then assumption on every resulting goal."
+      ]
+    },
+    {
+      "index": 93,
+      "title": "Splitting a match and discharging cases",
+      "hints": [
+        "Anonymous example: for x y z : Nat (leave w auto-bound), prove x ≠ 5 → y ≠ 5 → z ≠ 5 → z = w → f x y w = 1, in tactic mode, all on one line.",
+        "Introduce all the hypotheses with intros, leaving them unnamed.",
+        "Simplify, unfolding f.",
+        "Split on the match; on each resulting goal, try contradiction first and rfl if that fails."
+      ]
+    },
+    {
+      "index": 84,
+      "title": "Registering a lemma for simp",
+      "hints": [
+        "Theorem `reverse_mk_symm`, marked as a simplification rule where it is declared: for xs : List α, the reverse of mk_symm xs (taken with dot notation) equals mk_symm xs.",
+        "Prove it in tactic mode with simp, giving it mk_symm to unfold.",
+        "Anonymous example: for xs ys : List Nat, the reverse of xs ++ mk_symm ys equals mk_symm ys ++ the reverse of xs (both reverses by dot notation). Prove it with plain simp.",
+        "Anonymous example: for xs ys : List Nat, a predicate p : List Nat → Prop and h : p applied to the reverse of xs ++ mk_symm ys, prove p (mk_symm ys ++ the reverse of xs).",
+        "In tactic mode, on one line: simplify the hypothesis h, then close the goal with assumption."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "page": "Induction-and-Recursion",
+  "drills": [
+    {
+      "index": 27,
+      "title": "Fast Fibonacci with a local loop",
+      "hints": [
+        "Define `fibFast`, taking n : Nat and returning a Nat.",
+        "Inside it, declare a local recursive helper `loop : Nat → Nat × Nat`, defined by equations on its argument.",
+        "At 0, loop returns the pair (0, 1).",
+        "At n+1, locally bind p to loop n, then return the pair of p's second component and the sum of p's first and second components.",
+        "The result of fibFast is the second component of loop n."
+      ]
+    },
+    {
+      "index": 32,
+      "title": "Replicate with an accumulator loop",
+      "hints": [
+        "Define `replicate`, taking n : Nat and a : α (α left auto-bound), returning a List α.",
+        "Inside it, declare a local recursive helper `loop : Nat → List α → List α`, defined by equations on both arguments, naming the accumulator `as`.",
+        "At 0, return the accumulator unchanged.",
+        "At n+1, recurse on n with a consed onto the front of the accumulator.",
+        "The body of replicate runs loop from n with the empty list.",
+        "Check the type of the generated auxiliary `replicate.loop`, with all its arguments made explicit."
+      ]
+    },
+    {
+      "index": 36,
+      "title": "Well-founded recursion via WellFounded.fix",
+      "hints": [
+        "Define a noncomputable function `f`, with an implicit type α : Sort u.",
+        "Its explicit parameters: a relation r : α → α → Prop, a proof h that r is well-founded, a motive C : α → Sort v, and a recipe F which, for each x : α, given a function producing C y for every y with r y x, produces C x.",
+        "Its result type is the dependent function type assigning to each x : α an element of C x.",
+        "Its body is WellFounded.fix applied to h and F."
+      ]
+    },
+    {
+      "index": 41,
+      "title": "Unfolding div on the left-hand side",
+      "hints": [
+        "Anonymous example: for x y : Nat, div x y equals (if 0 < y ∧ y ≤ x then div (x - y) y + 1 else 0). Prove it in tactic mode.",
+        "Enter conversion mode, move to the left-hand side, and unfold div there only.",
+        "Close the goal with rfl.",
+        "Second anonymous example: for x y : Nat and h : 0 < y ∧ y ≤ x, prove div x y = div (x - y) y + 1 in tactic mode.",
+        "As before, unfold div on the left-hand side only, in conversion mode.",
+        "Finish with simp, using h."
+      ]
+    },
+    {
+      "index": 43,
+      "title": "Ackermann with lexicographic termination",
+      "hints": [
+        "Define `ack : Nat → Nat → Nat` by equations on both arguments.",
+        "ack 0 y is y+1.",
+        "ack (x+1) 0 is ack x 1.",
+        "ack (x+1) (y+1) is ack x applied to ack (x+1) y.",
+        "Justify termination by mapping the arguments x and y to the pair (x, y)."
+      ]
+    },
+    {
+      "index": 48,
+      "title": "Division with a custom decreasing proof",
+      "hints": [
+        "Theorem `div_lemma`: for implicit x y : Nat, 0 < y ∧ y ≤ x → x - y < x, in term mode.",
+        "Prove it by a lambda that destructures the conjunction into `ypos` and `ylex`.",
+        "The body applies Nat.sub_lt to (Nat.lt_of_lt_of_le ypos ylex) and to ypos.",
+        "Define `div (x y : Nat) : Nat`: if 0 < y ∧ y ≤ x (naming that proof h), return div (x - y) y + 1; otherwise 0.",
+        "Supply your own proof that the recursive call decreases: apply div_lemma, then close what remains with assumption."
+      ]
+    },
+    {
+      "index": 49,
+      "title": "Ackermann with explicit termination proofs",
+      "hints": [
+        "Define `ack : Nat → Nat → Nat` by equations on both arguments: ack 0 y is y+1; ack (x+1) 0 is ack x 1; ack (x+1) (y+1) is ack x (ack (x+1) y).",
+        "Justify termination by mapping the arguments x and y to the pair (x, y).",
+        "Supply the decreasing proofs yourself: first run simp_wf on all goals at once.",
+        "Then take the three goals in turn as focused bullets. First: apply Prod.Lex.left, then simp with arithmetic enabled.",
+        "Second: apply Prod.Lex.right, then simp with arithmetic enabled.",
+        "Third: same as the first."
+      ]
+    },
+    {
+      "index": 53,
+      "title": "Ackermann is always positive",
+      "hints": [
+        "Theorem `ack_gt_zero`: ack n m > 0 (n and m left auto-bound), in tactic mode.",
+        "Do functional induction following ack, and on every resulting goal run simp with all hypotheses in context plus ack's defining equations."
+      ]
+    },
+    {
+      "index": 56,
+      "title": "Five-way or by function cases",
+      "hints": [
+        "Theorem `f_or`: f b1 b2 b3 b4 b5 equals the boolean or of b1, b2, b3, b4, b5 (the b's left auto-bound), in tactic mode.",
+        "Split into cases following the branches of f, using fun_cases, and close every resulting goal with simp_all."
+      ]
+    },
+    {
+      "index": 59,
+      "title": "Inverting the mutual Even/Odd predicates",
+      "hints": [
+        "Open the namespaces Even and Odd.",
+        "Theorem `not_odd_zero`: ¬ Odd 0. Prove it by a lambda over h that eliminates h with an empty match.",
+        "Theorem `even_of_odd_succ`: ∀ n, Odd (n + 1) → Even n, defined by equations directly on its arguments.",
+        "Its only case ignores the number, matches the proof as odd_succ n h, and returns h.",
+        "Theorem `odd_of_even_succ`: ∀ n, Even (n + 1) → Odd n, in the same way, its only case matching even_succ n h."
+      ]
+    },
+    {
+      "index": 68,
+      "title": "Inverting a function on its image",
+      "hints": [
+        "Declare an inductive family `ImageOf`, with implicit α β : Type u and parameter f : α → β, indexed by β and living in Type u.",
+        "Its one constructor `imf` takes a : α and produces ImageOf f (f a).",
+        "Open the ImageOf namespace.",
+        "Define `inverse`, with implicit f : α → β, of type (b : β) → ImageOf f b → α, by equations.",
+        "Its single case: the first argument is f a, marked as inaccessible; the second is imf a; return a.",
+        "Define `inverse'` the same way, except that the first argument is just a wildcard."
+      ]
+    },
+    {
+      "index": 70,
+      "title": "Pointwise addition of vectors",
+      "hints": [
+        "Define `add`, requiring an Add α instance, of type: for implicit n : Nat, Vect α n → Vect α n → Vect α n, by equations.",
+        "In both cases, match the implicit length too, but as an inaccessible wildcard.",
+        "Two nils give nil.",
+        "cons a as and cons b bs give cons of a + b onto add of as and bs."
+      ]
+    },
+    {
+      "index": 37,
+      "title": "Division via WellFounded.fix",
+      "hints": [
+        "Open the Nat namespace.",
+        "Theorem `div_lemma`: for implicit x y : Nat, 0 < y ∧ y ≤ x → x - y < x, in term mode.",
+        "Prove it by a lambda over h: apply sub_lt to Nat.lt_of_lt_of_le of h's left and right components, and to h's left component.",
+        "Define `div.F`, taking x : Nat, then f : a dependent function from x₁ : Nat and a proof that x₁ < x to Nat → Nat, then y : Nat, and returning a Nat.",
+        "If 0 < y ∧ y ≤ x holds, with its proof named h, return f applied to x - y, div_lemma h and y, plus 1.",
+        "Otherwise return zero (unqualified, thanks to the opened namespace).",
+        "Define `div`, marked noncomputable, as WellFounded.fix applied to the well-foundedness field of measure id and to div.F."
+      ]
+    }
+  ]
+}

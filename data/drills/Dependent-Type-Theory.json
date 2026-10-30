@@ -1,0 +1,109 @@
+{
+  "page": "Dependent-Type-Theory",
+  "drills": [
+    {
+      "index": 17,
+      "title": "Three ways to write one function",
+      "hints": [
+        "Check the type of a function of x : Nat and y : Bool returning x + 1 if y is false and x + 2 otherwise (using `not`), written as one lambda over x whose body is a lambda over y, each binder type-annotated.",
+        "Check the same function again, as a single lambda binding both annotated arguments at once.",
+        "Check it a third time, as a single lambda over x and y with no type annotations at all, leaving Lean to infer them."
+      ]
+    },
+    {
+      "index": 37,
+      "title": "Chaining local definitions",
+      "hints": [
+        "Check the type of an expression that locally defines y as 2 + 2, then z as y + y, and returns z * z, all on one line.",
+        "Evaluate that same expression."
+      ]
+    },
+    {
+      "index": 42,
+      "title": "Composing functions with variables",
+      "hints": [
+        "Declare variables α, β, γ, each a Type.",
+        "Declare variables g : β → γ, f : α → β, and h : α → α.",
+        "Declare a variable x : α.",
+        "Define `compose` as g applied to f applied to x, with no explicit parameters.",
+        "Define `doTwice` as h applied twice to x.",
+        "Define `doThrice` as h applied three times to x.",
+        "Print the definitions of compose, doTwice, and doThrice."
+      ]
+    },
+    {
+      "index": 43,
+      "title": "Scoping variables to a section",
+      "hints": [
+        "Open a section named `useful`.",
+        "Inside it, declare variables α, β, γ, each a Type.",
+        "Declare variables g : β → γ, f : α → β, and h : α → α.",
+        "Declare a variable x : α.",
+        "Define `compose` as g applied to f applied to x, `doTwice` as h applied twice to x, and `doThrice` as h applied three times to x, none with explicit parameters.",
+        "Close the section."
+      ]
+    },
+    {
+      "index": 46,
+      "title": "Short names from the List namespace",
+      "hints": [
+        "Open the List namespace.",
+        "Check nil, cons, and map by their short names."
+      ]
+    },
+    {
+      "index": 48,
+      "title": "Defining in and reopening a namespace",
+      "hints": [
+        "Open a namespace named Foo.",
+        "Define `a : Nat` as 5.",
+        "Define `f`, taking x : Nat and returning the Nat x + 7.",
+        "Define `fa : Nat` as f applied to a, referring to both by their short names.",
+        "Close the namespace.",
+        "Check Foo.a and Foo.f by their full names.",
+        "Reopen Foo, define `ffa : Nat` as f applied twice to a, and close it again."
+      ]
+    },
+    {
+      "index": 50,
+      "title": "Full types of List functions",
+      "hints": [
+        "Check the types of List.cons, List.nil, List.length, and List.append, each with all of its implicit arguments made explicit."
+      ]
+    },
+    {
+      "index": 51,
+      "title": "Building and projecting dependent pairs",
+      "hints": [
+        "Declare universe levels u and v.",
+        "Define `f` with parameters α : Type u, β : α → Type v, a : α, and b : β a, returning the dependent pair type over a : α of β a, written in the binder-product form; build the pair from a and b with the anonymous constructor.",
+        "Define `g` with the same parameters, but write its return type with the Σ notation and build the pair with Sigma.mk.",
+        "Define `h1`, taking x : Nat and returning a Nat: apply f to Type, the identity type family (a lambda over α returning α), Nat, and x, then take the second component of the result.",
+        "Evaluate h1 on 5.",
+        "Define `h2` the same way as h1 but using g instead of f.",
+        "Evaluate h2 on 5."
+      ]
+    },
+    {
+      "index": 56,
+      "title": "A universe-polymorphic identity function",
+      "hints": [
+        "Declare a universe level u.",
+        "Define `ident`, taking a type α : Type u as an implicit argument and an explicit x : α, and returning x; leave the return type unstated."
+      ]
+    },
+    {
+      "index": 58,
+      "title": "Identity from implicit section variables",
+      "hints": [
+        "Declare a universe u.",
+        "Open an anonymous section.",
+        "Inside it, declare α : Type u as an implicit section variable.",
+        "Then declare x : α as an explicit section variable.",
+        "Define `ident` to be x.",
+        "Close the section.",
+        "Check the type of ident, then of ident applied to 4, then of ident applied to \"hello\"."
+      ]
+    }
+  ]
+}

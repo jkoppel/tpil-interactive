@@ -1,0 +1,67 @@
+[
+  {
+    "page": "Propositions-and-Proofs",
+    "after": "b141",
+    "code": "variable (p : Prop)\n\nexample : ¬(p ↔ ¬p) := sorry\n"
+  },
+  {
+    "page": "Quantifiers-and-Equality",
+    "after": "b130",
+    "item": 5,
+    "code": "open Classical\n\nvariable (α : Type) (p q : α → Prop)\nvariable (r : Prop)\n\nexample : (∃ x : α, r) → r := sorry\nexample (a : α) : r → (∃ x : α, r) := sorry\nexample : (∃ x, p x ∧ r) ↔ (∃ x, p x) ∧ r := sorry\nexample : (∃ x, p x ∨ q x) ↔ (∃ x, p x) ∨ (∃ x, q x) := sorry\n\nexample : (∀ x, p x) ↔ ¬ (∃ x, ¬ p x) := sorry\nexample : (∃ x, p x) ↔ ¬ (∀ x, ¬ p x) := sorry\nexample : (¬ ∃ x, p x) ↔ (∀ x, ¬ p x) := sorry\nexample : (¬ ∀ x, p x) ↔ (∃ x, ¬ p x) := sorry\n\nexample : (∀ x, p x → r) ↔ (∃ x, p x) → r := sorry\nexample (a : α) : (∃ x, p x → r) ↔ (∀ x, p x) → r := sorry\nexample (a : α) : (∃ x, r → p x) ↔ (r → ∃ x, p x) := sorry\n"
+  },
+  {
+    "page": "Tactics",
+    "after": "b246",
+    "item": 1,
+    "code": "variable (p q r : Prop)\n\n-- commutativity of ∧ and ∨\nexample : p ∧ q ↔ q ∧ p := by\n  sorry\nexample : p ∨ q ↔ q ∨ p := by\n  sorry\n\n-- associativity of ∧ and ∨\nexample : (p ∧ q) ∧ r ↔ p ∧ (q ∧ r) := by\n  sorry\nexample : (p ∨ q) ∨ r ↔ p ∨ (q ∨ r) := by\n  sorry\n\n-- distributivity\nexample : p ∧ (q ∨ r) ↔ (p ∧ q) ∨ (p ∧ r) := by\n  sorry\nexample : p ∨ (q ∧ r) ↔ (p ∨ q) ∧ (p ∨ r) := by\n  sorry\n\n-- other properties\nexample : (p → (q → r)) ↔ (p ∧ q → r) := by\n  sorry\nexample : ((p ∨ q) → r) ↔ (p → r) ∧ (q → r) := by\n  sorry\nexample : ¬(p ∨ q) ↔ ¬p ∧ ¬q := by\n  sorry\nexample : ¬p ∨ ¬q → ¬(p ∧ q) := by\n  sorry\nexample : ¬(p ∧ ¬p) := by\n  sorry\nexample : p ∧ ¬q → ¬(p → q) := by\n  sorry\nexample : ¬p → (p → q) := by\n  sorry\nexample : (¬p ∨ q) → (p → q) := by\n  sorry\nexample : p ∨ False ↔ p := by\n  sorry\nexample : p ∧ False ↔ False := by\n  sorry\nexample : (p → q) → (¬q → ¬p) := by\n  sorry\n\nsection\nvariable (α : Type) (p q : α → Prop)\n\nexample : (∀ x, p x ∧ q x) ↔ (∀ x, p x) ∧ (∀ x, q x) := by\n  sorry\nexample : (∀ x, p x → q x) → (∀ x, p x) → (∀ x, q x) := by\n  sorry\nexample : (∀ x, p x) ∨ (∀ x, q x) → ∀ x, p x ∨ q x := by\n  sorry\nend\n"
+  },
+  {
+    "page": "Inductive-Types",
+    "after": "b215",
+    "item": 1,
+    "code": "namespace Hidden\nopen Nat\n\ndef mul (m n : Nat) : Nat := sorry\n\ndef pred (n : Nat) : Nat := sorry\n\n-- truncated subtraction\ndef sub (m n : Nat) : Nat := sorry\n\ndef pow (m n : Nat) : Nat := sorry\n\nend Hidden\n"
+  },
+  {
+    "page": "Inductive-Types",
+    "after": "b215",
+    "item": 2,
+    "code": "namespace Hidden\n\ndef length : List α → Nat := sorry\n\ndef reverse : List α → List α := sorry\n\ntheorem length_append (xs ys : List α) : length (xs ++ ys) = length xs + length ys := sorry\n\ntheorem length_reverse (xs : List α) : length (reverse xs) = length xs := sorry\n\ntheorem reverse_reverse (xs : List α) : reverse (reverse xs) = xs := sorry\n\nend Hidden\n"
+  },
+  {
+    "page": "Inductive-Types",
+    "after": "b215",
+    "item": 3,
+    "code": "inductive Term where\n  -- const, var, plus, times\n\ndef Term.eval (v : Nat → Nat) : Term → Nat := sorry\n"
+  },
+  {
+    "page": "Inductive-Types",
+    "after": "b215",
+    "item": 4,
+    "code": "inductive PropForm where\n  -- your constructors\n\ndef PropForm.eval (v : Nat → Bool) : PropForm → Bool := sorry\n\ndef PropForm.complexity : PropForm → Nat := sorry\n\n-- substitute `f` for the variable numbered `x`\ndef PropForm.subst (x : Nat) (f : PropForm) : PropForm → PropForm := sorry\n"
+  },
+  {
+    "page": "Induction-and-Recursion",
+    "after": "b213",
+    "item": 1,
+    "code": "namespace Hidden\nopen Nat\n\ndef add : Nat → Nat → Nat := sorry\n\ndef mul : Nat → Nat → Nat := sorry\n\ndef pow : Nat → Nat → Nat := sorry\n\ntheorem add_zero (n : Nat) : add n zero = n := sorry\n\ntheorem zero_add (n : Nat) : add zero n = n := sorry\n\nend Hidden\n"
+  },
+  {
+    "page": "Induction-and-Recursion",
+    "after": "b213",
+    "item": 2,
+    "code": "namespace Hidden\nopen List\n\ndef reverse : List α → List α := sorry\n\ntheorem reverse_reverse (xs : List α) : reverse (reverse xs) = xs := sorry\n\nend Hidden\n"
+  },
+  {
+    "page": "Induction-and-Recursion",
+    "after": "b213",
+    "item": 3,
+    "code": "-- course-of-values recursion on Nat\n\n-- your own WellFounded.fix\n"
+  },
+  {
+    "page": "Induction-and-Recursion",
+    "after": "b213",
+    "item": 4,
+    "code": "universe u\n\ninductive Vect (α : Type u) : Nat → Type u\n  | nil  : Vect α 0\n  | cons : α → {n : Nat} → Vect α n → Vect α (n+1)\n\nnamespace Vect\n\ndef append : Vect α n → Vect α m → Vect α (n + m) := sorry\n\nend Vect\n"
+  }
+]

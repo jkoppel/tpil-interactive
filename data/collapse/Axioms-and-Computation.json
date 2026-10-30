@@ -1,0 +1,53 @@
+{
+  "page": "Axioms-and-Computation",
+  "collapse": [
+    {
+      "start": "b0",
+      "end": "b1",
+      "summary": "extending CIC with axioms; canonicity of the axiom-free fragment",
+      "startsWith": "We have seen that the version of the Cal"
+    },
+    {
+      "start": "b8",
+      "end": "b11",
+      "summary": "history of constructive vs classical mathematics; canonicity without Prop",
+      "startsWith": "For most of its history, mathematics was"
+    },
+    {
+      "start": "b16",
+      "end": "b16",
+      "summary": "meaning of propext and its set-theoretic justification",
+      "startsWith": "It asserts that when two propositions im"
+    },
+    {
+      "start": "b20",
+      "end": "b20",
+      "summary": "extensional vs intensional views of function equality",
+      "startsWith": "From a classical, set-theoretic perspect"
+    },
+    {
+      "start": "b30",
+      "end": "b31",
+      "summary": "OTT/cubical research on casts; erasure semantics justifies ignoring casts",
+      "startsWith": "Current research programs, including wor"
+    },
+    {
+      "start": "b42",
+      "end": "b42",
+      "summary": "quotient by any relation identifies its equivalence closure",
+      "startsWith": "Of course, the quotient construction is "
+    },
+    {
+      "start": "b71",
+      "end": "b71",
+      "summary": "why choice blocks meaningful computation",
+      "startsWith": "Given only the assertion h that α is non"
+    },
+    {
+      "start": "b104",
+      "end": "b104",
+      "summary": "classical vs constructive acceptability of the left inverse",
+      "startsWith": "From a classical point of view, linv is "
+    }
+  ]
+}

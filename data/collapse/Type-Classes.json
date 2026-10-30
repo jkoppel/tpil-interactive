@@ -1,0 +1,53 @@
+{
+  "page": "Type-Classes",
+  "collapse": [
+    {
+      "start": "b0",
+      "end": "b0",
+      "summary": "typeclass motivation: ad-hoc polymorphism by passing implementations explicitly",
+      "startsWith": "Type classes were introduced as a princi"
+    },
+    {
+      "start": "b4",
+      "end": "b4",
+      "summary": "passing implementations by hand is cumbersome",
+      "startsWith": "Note that you can double a natural numbe"
+    },
+    {
+      "start": "b21",
+      "end": "b21",
+      "summary": "instances chain; resolution is a Prolog-like backtracking search",
+      "startsWith": "If that were the extent of type class in"
+    },
+    {
+      "start": "b69",
+      "end": "b69",
+      "summary": "what decidability means; classical definitions are not computable",
+      "startsWith": "Let us consider another example of a typ"
+    },
+    {
+      "start": "b77",
+      "end": "b77",
+      "summary": "not all propositions decidable; basic ones and connectives preserve it",
+      "startsWith": "Without classical logic, we cannot prove"
+    },
+    {
+      "start": "b106",
+      "end": "b109",
+      "summary": "coercions: between type families, to sorts, to function types",
+      "startsWith": "The most basic type of coercion maps ele"
+    },
+    {
+      "start": "b121",
+      "end": "b123",
+      "summary": "coercions to sorts: general form, structure carriers as types",
+      "startsWith": "Let us now consider the second kind of c"
+    },
+    {
+      "start": "b130",
+      "end": "b131",
+      "summary": "coercions to function types: general form",
+      "startsWith": "By the class of function types, we mean "
+    }
+  ]
+}

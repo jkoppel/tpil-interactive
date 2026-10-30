@@ -1,0 +1,95 @@
+{
+  "page": "Quantifiers-and-Equality",
+  "drills": [
+    {
+      "index": 0,
+      "title": "Specialising a universal conjunction",
+      "hints": [
+        "Anonymous example: for α : Type and predicates p, q on α, prove (∀ x : α, p x ∧ q x) → ∀ y : α, p y, in term mode.",
+        "Take the hypothesis h by a lambda, annotating it with its type ∀ x : α, p x ∧ q x.",
+        "Then take y : α by a second lambda, also annotated.",
+        "Explicitly state that what follows proves p y, and prove it by applying h to y and taking the left component with dot notation."
+      ]
+    },
+    {
+      "index": 11,
+      "title": "Substituting equals two ways",
+      "hints": [
+        "Anonymous example: for α : Type, a b : α, a predicate p on α, h1 : a = b and h2 : p a, prove p b by applying Eq.subst to h1 and h2.",
+        "Same statement again, but this time prove it with the infix substitution operator (the triangle) combining h1 and h2."
+      ]
+    },
+    {
+      "index": 24,
+      "title": "Expanding a square by rewriting and simp",
+      "hints": [
+        "Declare section variables x and y of type Nat.",
+        "Anonymous example: (x + y) * (x + y) = x * x + y * x + x * y + y * y, in tactic mode.",
+        "Prove it with a single rewrite using, in order: Nat.mul_add, Nat.add_mul, Nat.add_mul again, and finally Nat.add_assoc right to left.",
+        "Restate the same example, now proved by simp given the lemmas Nat.mul_add, Nat.add_mul and Nat.add_assoc."
+      ]
+    },
+    {
+      "index": 28,
+      "title": "Swapping conjuncts under an existential",
+      "hints": [
+        "Declare section variables α : Type and predicates p and q on α.",
+        "Anonymous example: from h : ∃ x, p x ∧ q x prove ∃ x, q x ∧ p x, in term mode, by applying Exists.elim to h.",
+        "The second argument to Exists.elim is a lambda over the witness w, followed by a lambda over hw annotated as p w ∧ q w.",
+        "In its body, explicitly state the goal ∃ x, q x ∧ p x, and prove it with one flat anonymous constructor containing w, the right part of hw, and the left part of hw."
+      ]
+    },
+    {
+      "index": 30,
+      "title": "Swapping conjuncts by matching an existential",
+      "hints": [
+        "Anonymous example: from h : ∃ x, p x ∧ q x prove ∃ x, q x ∧ p x, in term mode, by pattern-matching on h.",
+        "The single case destructures h into the witness w, annotated with type α, and hw, annotated as p w ∧ q w.",
+        "Return one flat anonymous constructor of w, the right part of hw, and the left part of hw."
+      ]
+    },
+    {
+      "index": 33,
+      "title": "Swapping conjuncts with a destructuring lambda",
+      "hints": [
+        "Anonymous example: prove (∃ x, p x ∧ q x) → ∃ x, q x ∧ p x in term mode, by a lambda whose argument is destructured right in the binder into w, hpw and hqw (one flat pattern).",
+        "Return w together with hqw and hpw, as one flat anonymous constructor."
+      ]
+    },
+    {
+      "index": 34,
+      "title": "Sum of two even numbers is even",
+      "hints": [
+        "Define IsEven for a natural number a as ∃ b, a = 2 * b.",
+        "Theorem even_plus_even: from h1 : IsEven a and h2 : IsEven b (leave a and b auto-bound), prove IsEven (a + b), in term mode.",
+        "Eliminate h1 with Exists.elim, continuing with a lambda over the witness w1 and hw1, annotated as a = 2 * w1.",
+        "Inside it, eliminate h2 the same way, with witness w2 and hw2 : b = 2 * w2.",
+        "Inside that, build the existential with Exists.intro, giving the witness w1 + w2 and a calculational proof starting from a + b.",
+        "First calc step: equals 2 * w1 + 2 * w2, by a tactic block rewriting with hw1 and hw2.",
+        "Second calc step: equals 2 * (w1 + w2), by a tactic block rewriting with Nat.mul_add."
+      ]
+    },
+    {
+      "index": 40,
+      "title": "Chaining inequalities with inferred hypotheses",
+      "hints": [
+        "Anonymous example: prove f 0 ≤ f 3 in term mode, through a chain of anonymous (unnamed) local facts.",
+        "First fact: f 0 ≤ f 1, proved by h 0.",
+        "Second fact: f 0 ≤ f 2, by Nat.le_trans whose first argument is found by the assumption tactic (an inline tactic block) and whose second is h 1.",
+        "Finally, explicitly state the goal f 0 ≤ f 3 and prove it the same way, with h 2 as the second argument."
+      ]
+    },
+    {
+      "index": 42,
+      "title": "Antisymmetry from anonymous hypotheses",
+      "hints": [
+        "Declare section variables f : Nat → Nat and h : ∀ x : Nat, f x ≤ f (x + 1).",
+        "Anonymous example: f 0 ≥ f 1 → f 1 ≥ f 2 → f 0 = f 2, in term mode.",
+        "Take both hypotheses by lambdas without giving them names, each annotated with its type.",
+        "Anonymous local fact f 0 ≥ f 2: Nat.le_trans applied to the hypothesis f 1 ≥ f 2 and then the hypothesis f 0 ≥ f 1, each referred to by stating its type rather than a name.",
+        "Anonymous local fact f 0 ≤ f 2: Nat.le_trans applied to h 0 and h 1.",
+        "Explicitly state the goal f 0 = f 2 and prove it by Nat.le_antisymm applied to the most recent anonymous fact (by its default name) and the fact f 0 ≥ f 2, referred to by its type."
+      ]
+    }
+  ]
+}

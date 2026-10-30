@@ -1,0 +1,71 @@
+{
+  "page": "Induction-and-Recursion",
+  "collapse": [
+    {
+      "start": "b0",
+      "end": "b0",
+      "summary": "recursors as the only eliminators; induction as the fundamental proof method",
+      "startsWith": "In the previous chapter, we saw that ind"
+    },
+    {
+      "start": "b2",
+      "end": "b2",
+      "summary": "pattern matching as readable sugar over nested case analysis",
+      "startsWith": "The interpretation of schematic patterns"
+    },
+    {
+      "start": "b53",
+      "end": "b54",
+      "summary": "roadmap: structural, well-founded, and mutual recursion sections",
+      "startsWith": "What makes the equation compiler powerfu"
+    },
+    {
+      "start": "b58",
+      "end": "b58",
+      "summary": "structural recursion: recursive calls on subterms of the patterns",
+      "startsWith": "As we saw in the last section, the terms"
+    },
+    {
+      "start": "b60",
+      "end": "b60",
+      "summary": "proof by induction is just recursion",
+      "startsWith": "The proof of zero_add makes it clear tha"
+    },
+    {
+      "start": "b91",
+      "end": "b91",
+      "summary": "well-founded recursion needs a well-founded relation and decreasing calls",
+      "startsWith": "When structural recursion cannot be used"
+    },
+    {
+      "start": "b94",
+      "end": "b94",
+      "summary": "accessibility predicate Acc: all predecessors accessible",
+      "startsWith": "The first, Acc, is an inductively define"
+    },
+    {
+      "start": "b97",
+      "end": "b98",
+      "summary": "arguments of the well-founded fixpoint (motive, recipe); also an induction principle",
+      "startsWith": "There is a long cast of characters here,"
+    },
+    {
+      "start": "b135",
+      "end": "b135",
+      "summary": "functional induction principles follow a function's recursion structure",
+      "startsWith": "Lean generates bespoke induction princip"
+    },
+    {
+      "start": "b171",
+      "end": "b171",
+      "summary": "why indexed families make case analysis via recursors painful",
+      "startsWith": "All the examples of pattern matching we "
+    },
+    {
+      "start": "b175",
+      "end": "b175",
+      "summary": "the impossible nil case when the index is n + 1",
+      "startsWith": "But what value should we return in the n"
+    }
+  ]
+}

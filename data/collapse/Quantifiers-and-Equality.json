@@ -1,0 +1,53 @@
+{
+  "page": "Quantifiers-and-Equality",
+  "collapse": [
+    {
+      "start": "b0",
+      "end": "b0",
+      "summary": "chapter overview: quantifiers and equality",
+      "startsWith": "The last chapter introduced you to metho"
+    },
+    {
+      "start": "b1",
+      "end": "b11",
+      "summary": "predicates as α → Prop; ∀ intro/elim as dependent function rules",
+      "startsWith": "Notice that if α is any type, we can rep"
+    },
+    {
+      "start": "b15",
+      "end": "b15",
+      "summary": "alpha-equivalence: bound variable names do not matter",
+      "startsWith": "Remember that expressions which differ u"
+    },
+    {
+      "start": "b19",
+      "end": "b19",
+      "summary": "walkthrough of instantiating and applying a ∀-proof",
+      "startsWith": "Think about what is going on here. When "
+    },
+    {
+      "start": "b28",
+      "end": "b28",
+      "summary": "history of predicativity and impredicative quantification over predicates",
+      "startsWith": "The term “predicative” stems from founda"
+    },
+    {
+      "start": "b39",
+      "end": "b39",
+      "summary": "definitional equality lets reflexivity prove computed identities",
+      "startsWith": "Reflexivity is more powerful than it loo"
+    },
+    {
+      "start": "b93",
+      "end": "b93",
+      "summary": "∃ versus Σ types as a Curry–Howard pair",
+      "startsWith": "Notice that an existential proposition i"
+    },
+    {
+      "start": "b109",
+      "end": "b109",
+      "summary": "constructive vs classical ∃; ¬∀¬ → ∃ needs classical logic",
+      "startsWith": "Just as the constructive “or” is stronge"
+    }
+  ]
+}

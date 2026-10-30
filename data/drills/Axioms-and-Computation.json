@@ -1,0 +1,82 @@
+{
+  "page": "Axioms-and-Computation",
+  "drills": [
+    {
+      "index": 1,
+      "title": "Substituting equivalent propositions",
+      "hints": [
+        "Declare propositions a, b, c, d, e as section variables.",
+        "Theorem `thm₁`: given h : a ↔ b, prove (c ∧ a ∧ d → e) ↔ (c ∧ b ∧ d → e), in term mode.",
+        "Turn h into an equality with propext, and use it to rewrite Iff.refl (its argument left to be inferred).",
+        "Theorem `thm₂`: given p : Prop → Prop, h : a ↔ b and h₁ : p a, prove p b.",
+        "Rewrite h₁ along propext h."
+      ]
+    },
+    {
+      "index": 6,
+      "title": "A term that propext stops from reducing",
+      "hints": [
+        "Theorem `tteq`: (True ∧ True) = True, in term mode.",
+        "Apply propext to an Iff.intro whose forward direction is a lambda destructuring the conjunction and returning its first component, and whose backward direction is a lambda over h pairing h with itself.",
+        "Define `val : Nat` by Eq.recOn on tteq and 0, giving the motive explicitly by name as the two-argument function that always returns Nat.",
+        "Reduce val, then evaluate val."
+      ]
+    },
+    {
+      "index": 9,
+      "title": "The quotient soundness axiom",
+      "hints": [
+        "Postulate the axiom `Quot.sound`: for implicit α : Type u, r : α → α → Prop and a b : α, r a b → Quot.mk r a = Quot.mk r b."
+      ]
+    },
+    {
+      "index": 13,
+      "title": "Equivalence relation for unordered pairs",
+      "hints": [
+        "Privately define `eqv` on p₁ p₂ : α × α, a Prop: the pairs agree componentwise (first with first, second with second), or crosswise (p₁'s first with p₂'s second, p₁'s second with p₂'s first). Access components by projection.",
+        "Declare ~ as infix notation for eqv, at precedence 50."
+      ]
+    },
+    {
+      "index": 16,
+      "title": "Unordered pairs are symmetric",
+      "hints": [
+        "Theorem `mk_eq_mk`: for a₁ a₂ : α, the unordered pair {a₁, a₂} equals {a₂, a₁}.",
+        "Prove it by Quot.sound applied to the right disjunct, built from rfl and rfl with the anonymous constructor."
+      ]
+    },
+    {
+      "index": 22,
+      "title": "Indefinite description from choice",
+      "hints": [
+        "Define a noncomputable `indefiniteDescription`, with implicit α : Sort u, taking p : α → Prop and h : ∃ x, p x, and returning the subtype of α of elements satisfying p.",
+        "Its body is choice applied, without parenthesising the argument, to the following.",
+        "Locally destructure h into x and px, then build a Nonempty holding the subtype element made from x and px."
+      ]
+    },
+    {
+      "index": 36,
+      "title": "Left inverse of an injective function",
+      "hints": [
+        "Open Classical.",
+        "Define a noncomputable `linv`, requiring Inhabited α, taking f : α → β and returning β → α.",
+        "Its body is a lambda over b : β: if ∃ a : α, f a = b (naming that proof ex), return choose ex; otherwise default.",
+        "Theorem `linv_comp_self`: for implicit f : α → β, with Inhabited α, and inj : ∀ a b, f a = f b → a = b (a and b implicit), prove linv f ∘ f = id.",
+        "Apply funext to a lambda over a.",
+        "Have ex : ∃ a₁ : α, f a₁ = f a, with witness a and proof rfl.",
+        "Have feq : f (choose ex) = f a, by choose_spec ex.",
+        "Finish with a calculation starting from linv f (f a): it equals choose ex by rfl, which equals a by inj feq."
+      ]
+    },
+    {
+      "index": 18,
+      "title": "Function extensionality from quotients",
+      "hints": [
+        "Anonymous example with no stated result type: for f₁ f₂ : (x : α) → β x and h : ∀ x, f₁ x = f₂ x, give a calculational proof starting from f₁.",
+        "First step: equals extfun_app applied to the class of f₁, built with Quot.mk written in leading-dot shorthand and the relation left as a placeholder; by rfl.",
+        "Second step: equals extfun_app applied to the class of f₂, in tactic mode: rewrite with Quot.sound, then finish with trivial.",
+        "Last step: equals f₂, by rfl."
+      ]
+    }
+  ]
+}

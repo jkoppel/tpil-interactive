@@ -1,0 +1,17 @@
+{
+  "page": "Interacting-with-Lean",
+  "collapse": [
+    {
+      "start": "b12",
+      "end": "b12",
+      "summary": "role of a proof assistant front end; editor feedback",
+      "startsWith": "The goal of Lean's front end is to inter"
+    },
+    {
+      "start": "b66",
+      "end": "b66",
+      "summary": "why custom notation and DSLs are valuable in formalization",
+      "startsWith": "While introducing new notations is a rel"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "page": "Introduction",
+  "collapse": [
+    {
+      "start": "b0",
+      "end": "b3",
+      "summary": "formal verification, automated vs interactive theorem proving, proof objects",
+      "startsWith": "Formal verification involves the use of "
+    }
+  ]
+}

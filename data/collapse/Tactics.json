@@ -1,0 +1,17 @@
+{
+  "page": "Tactics",
+  "collapse": [
+    {
+      "start": "b0",
+      "end": "b1",
+      "summary": "what tactics are; tactic-style vs term-style proofs tradeoffs",
+      "startsWith": "In this chapter, we describe an alternat"
+    },
+    {
+      "start": "b124",
+      "end": "b124",
+      "summary": "motivation: long tactic scripts obscure proof structure",
+      "startsWith": "Tactics often provide an efficient way o"
+    }
+  ]
+}

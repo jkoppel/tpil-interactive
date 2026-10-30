@@ -1,0 +1,84 @@
+{
+  "page": "Propositions-and-Proofs",
+  "drills": [
+    {
+      "index": 3,
+      "title": "Postulating implication introduction",
+      "hints": [
+        "Postulate, without proof, `implies_intro`: for propositions p and q given as parameters, a function from Proof p to Proof q yields a Proof of Implies p q."
+      ]
+    },
+    {
+      "index": 4,
+      "title": "Proving p → q → p",
+      "hints": [
+        "Declare p as an implicit variable of type Prop, and then, separately, q likewise.",
+        "Theorem `t1`: p → q → p, proved by a lambda taking hp : p, whose body is a lambda taking hq : q, returning hp; annotate both binders."
+      ]
+    },
+    {
+      "index": 5,
+      "title": "Printing a proof term",
+      "hints": [
+        "Theorem `t1`: p → q → p, proved by a lambda taking hp : p, whose body is a lambda taking hq : q, returning hp; annotate both binders.",
+        "Print the proof of t1."
+      ]
+    },
+    {
+      "index": 11,
+      "title": "Quantifying over propositions explicitly",
+      "hints": [
+        "Theorem `t1`: for all propositions p and q, quantified implicitly in the statement itself, p → q → p.",
+        "Prove it with a single lambda that binds p and q implicitly (with their type), then hp : p and hq : q, and returns hp."
+      ]
+    },
+    {
+      "index": 25,
+      "title": "Disjunction is commutative",
+      "hints": [
+        "Declare variables p, q, r of type Prop.",
+        "An anonymous example: from `h : p ∨ q`, prove q ∨ p, as a term.",
+        "Eliminate h with Or.elim: in the first case, given hp, inject it on the right with Or.inr; in the second, given hq, inject it on the left with Or.inl. Leave the lambda binders unannotated."
+      ]
+    },
+    {
+      "index": 28,
+      "title": "Anything follows from a contradiction",
+      "hints": [
+        "Declare variables p and q of type Prop.",
+        "An anonymous example: from `hp : p` and `hnp : ¬p`, prove q, by False.elim applied to the result of applying hnp to hp."
+      ]
+    },
+    {
+      "index": 32,
+      "title": "Swapping a conjunction, both ways",
+      "hints": [
+        "Declare variables p and q of type Prop.",
+        "Theorem `and_swap`: p ∧ q ↔ q ∧ p, proved by building the iff directly from its two directions with the anonymous constructor.",
+        "Each direction is the same: a lambda over h that builds a pair from h's right component and h's left component, accessed by field projection.",
+        "An anonymous example: from `h : p ∧ q`, prove q ∧ p by applying the forward direction (mp) of and_swap, instantiated at p and q, to h."
+      ]
+    },
+    {
+      "index": 37,
+      "title": "Double negation by cases",
+      "hints": [
+        "Open the Classical namespace.",
+        "Declare a variable p of type Prop.",
+        "An anonymous example: from `h : ¬¬p`, prove p, by byCases on p.",
+        "In the case where p holds, a lambda over an annotated h1 : p simply returns it.",
+        "In the case where ¬p holds, a lambda over an annotated h1 : ¬p derives the goal by absurd from h1 and h."
+      ]
+    },
+    {
+      "index": 38,
+      "title": "Double negation by contradiction",
+      "hints": [
+        "Open the Classical namespace.",
+        "Declare a variable p of type Prop.",
+        "An anonymous example: from `h : ¬¬p`, prove p, by byContradiction.",
+        "Its argument is a lambda over an annotated h1 : ¬p, whose body explicitly states that it proves False, justified by applying h to h1."
+      ]
+    }
+  ]
+}

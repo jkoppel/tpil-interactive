@@ -1,0 +1,5 @@
+[
+  { "page": "Interacting-with-Lean", "index": 17, "why": "reproducing it means memorising a long exact error message" },
+  { "page": "Tactics", "index": 73, "why": "mostly arbitrary arithmetic terms to copy" },
+  { "page": "Induction-and-Recursion", "index": 36, "why": "mostly an arbitrary parameter list to memorise" }
+]

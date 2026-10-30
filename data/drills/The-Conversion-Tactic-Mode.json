@@ -1,0 +1,24 @@
+{
+  "page": "The-Conversion-Tactic-Mode",
+  "drills": [
+    {
+      "index": 7,
+      "title": "Rewriting both factors in conversion mode",
+      "hints": [
+        "Anonymous example: for a b c : Nat, (0 + a) * (b * c) = a * (c * b), in tactic mode.",
+        "Enter conversion mode and move to the left-hand side.",
+        "Split the product into its two factors with congr.",
+        "As a focused bullet for the first factor, rewrite with Nat.zero_add.",
+        "As a focused bullet for the second factor, rewrite with Nat.mul_comm."
+      ]
+    },
+    {
+      "index": 2,
+      "title": "Equal lambdas by function extensionality",
+      "hints": [
+        "Anonymous example: the function sending x : Nat to 0 + x equals the function sending x to x (annotate only the first binder), in tactic mode.",
+        "On one line: apply function extensionality, naming the variable x, then rewrite with Nat.zero_add."
+      ]
+    }
+  ]
+}

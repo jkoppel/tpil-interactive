@@ -1,0 +1,77 @@
+{
+  "page": "Propositions-and-Proofs",
+  "collapse": [
+    {
+      "start": "b0",
+      "end": "b0",
+      "summary": "chapter overview: assertions and proofs in dependent type theory",
+      "startsWith": "By now, you have seen some ways of defin"
+    },
+    {
+      "start": "b1",
+      "end": "b1",
+      "summary": "why not layer a separate assertion and proof language",
+      "startsWith": "One strategy for proving assertions abou"
+    },
+    {
+      "start": "b4",
+      "end": "b16",
+      "summary": "toy Proof p encoding, modus ponens, implies-intro; implication as function type",
+      "startsWith": "We could then introduce, for each elemen"
+    },
+    {
+      "start": "b18",
+      "end": "b19",
+      "summary": "two readings of propositions-as-types: constructive data vs coding trick",
+      "startsWith": "There are at least two ways of thinking "
+    },
+    {
+      "start": "b21",
+      "end": "b23",
+      "summary": "comparing the two readings; proving means exhibiting a well-typed term",
+      "startsWith": "The two ways we have suggested thinking "
+    },
+    {
+      "start": "b26",
+      "end": "b26",
+      "summary": "proof of t1 parallels the function fun x y => x on data",
+      "startsWith": "Compare this proof to the expression fun"
+    },
+    {
+      "start": "b40",
+      "end": "b40",
+      "summary": "axioms as assumed facts; applying t1 to hp",
+      "startsWith": "Declaring an “axiom” hp : p is tantamoun"
+    },
+    {
+      "start": "b49",
+      "end": "b49",
+      "summary": "a variable of type r → s read as a hypothesis",
+      "startsWith": "Once again, using the propositions-as-ty"
+    },
+    {
+      "start": "b59",
+      "end": "b59",
+      "summary": "lambda and application as intro/elim rules for implication",
+      "startsWith": "In the last chapter we observed that lam"
+    },
+    {
+      "start": "b110",
+      "end": "b111",
+      "summary": "constructive vs classical disjunction; double-negation elimination from LEM",
+      "startsWith": "Intuitively, the constructive “Or” is ve"
+    },
+    {
+      "start": "b118",
+      "end": "b118",
+      "summary": "why ¬(p ∧ q) → ¬p ∨ ¬q needs classical reasoning",
+      "startsWith": "If you are not used to thinking construc"
+    },
+    {
+      "start": "b122",
+      "end": "b132",
+      "summary": "list of standard propositional identities, constructive and classical",
+      "startsWith": "Lean's standard library contains proofs "
+    }
+  ]
+}

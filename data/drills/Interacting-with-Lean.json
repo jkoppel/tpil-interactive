@@ -1,0 +1,63 @@
+{
+  "page": "Interacting-with-Lean",
+  "drills": [
+    {
+      "index": 8,
+      "title": "Protected names get no short alias",
+      "hints": [
+        "Define Foo.bar : Nat as 1, marked so that opening Foo will not create the short alias bar.",
+        "Open the namespace Foo.",
+        "Check bar, wrapped in a #guard_msgs whose expected message is the error: Unknown identifier `bar`.",
+        "Check the full name Foo.bar."
+      ]
+    },
+    {
+      "index": 17,
+      "title": "Locally enabling a list-ordering instance",
+      "hints": [
+        "Define instLe, an abbreviation of type LE (List α), built as a structure instance whose le field is isPrefix.",
+        "Open an anonymous section.",
+        "Inside it, use the attribute command to make instLe an instance with local scope.",
+        "Anonymous example: for as : List α, prove as ≤ as, in term mode, by building the pair of the witness [] and a proof by the simp tactic directly.",
+        "Close the section.",
+        "Repeat the same example after the section, wrapped in a #guard_msgs expecting the error that Lean failed to synthesize an instance of LE (List α), followed by its hint suggesting set_option trace.Meta.synthInstance true."
+      ]
+    },
+    {
+      "index": 27,
+      "title": "Turning on verbose pretty-printing",
+      "hints": [
+        "Turn on the options pp.explicit and pp.universes, and turn off pp.notation.",
+        "Check the type of the proposition 2 + 2 = 4.",
+        "Reduce the equation between the function adding 2 to its argument x and the function adding 3 to x.",
+        "Check the type of the function adding 1 to its argument x, applied to 1."
+      ]
+    },
+    {
+      "index": 29,
+      "title": "Inspecting the product type's operations",
+      "hints": [
+        "Check the types, with all implicit arguments made explicit, of Prod's constructor mk, its projections fst and snd, and its recursor rec."
+      ]
+    },
+    {
+      "index": 39,
+      "title": "Naming arguments to folds and substitutions",
+      "hints": [
+        "Define sum of xs : List Nat by a left fold over xs (called as a method on xs), passing the initial value 0 by its parameter name init, and passing addition written in the centered-dot placeholder shorthand.",
+        "Evaluate sum on [1, 2, 3, 4].",
+        "Anonymous example with implicit naturals a, b and implicit predicate p : Nat → Nat → Nat → Prop, hypotheses h₁ : p a b b and h₂ : b = a, proving p a a b.",
+        "Term-mode proof: Eq.subst applied to h₂ and h₁, supplying its motive by parameter name as a lambda over x giving p a x b."
+      ]
+    },
+    {
+      "index": 41,
+      "title": "Extracting binder parts from terms",
+      "hints": [
+        "Inductive type Term with four constructors whose arguments are named: var with name : String; num with val : Nat; app with fn : Term and arg : Term; lambda with name : String, type : Term, and body : Term.",
+        "Define getBinderName : Term → Option String by equations: on a lambda, bind just its name argument (by parameter name) to n, eliding all remaining explicit arguments, and return some n; on anything else, return none.",
+        "Define getBinderType : Term → Option Term the same way, binding the lambda's type argument to t."
+      ]
+    }
+  ]
+}

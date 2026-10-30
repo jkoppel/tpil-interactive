@@ -1,0 +1,36 @@
+{
+  "page": "Structures-and-Records",
+  "drills": [
+    {
+      "index": 4,
+      "title": "Adding points via namespace functions",
+      "hints": [
+        "Structure Point, parameterised by α : Type u, with fields x and y of type α, deriving Repr.",
+        "Define Point.add on p q : Point Nat, building the result with the constructor mk (unqualified, since the definition lives in the Point namespace) from the sum of their x fields and the sum of their y fields.",
+        "Define p : Point Nat as the constructor applied to 1 and 2, and q : Point Nat as the constructor applied to 3 and 4.",
+        "Evaluate p added to q, calling add as a method on p."
+      ]
+    },
+    {
+      "index": 10,
+      "title": "Extending a point with a color",
+      "hints": [
+        "Structure Point, parameterised by α : Type u, with fields x and y of type α.",
+        "Inductive type Color with three argument-free constructors red, green, blue.",
+        "Structure ColorPoint, parameterised by α : Type u, that inherits from Point α and adds a field c : Color."
+      ]
+    },
+    {
+      "index": 11,
+      "title": "Multiple inheritance with a proof field",
+      "hints": [
+        "Structure Point, parameterised by α : Type u, with fields x, y, z of type α.",
+        "Structure RGBValue with Nat fields red, green, blue.",
+        "Structure RedGreenPoint, parameterised by α : Type u, inheriting from both Point α and RGBValue, adding a field no_blue stating blue = 0.",
+        "Define p : Point Nat as a structure instance with x 10, y 10, z 20.",
+        "Define rgp : RedGreenPoint Nat by updating p with red 200, green 40, blue 0, and no_blue proved by rfl.",
+        "Two anonymous examples, both proved by rfl: rgp's x field is 10, and rgp's red field is 200."
+      ]
+    }
+  ]
+}

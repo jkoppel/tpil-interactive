@@ -1,0 +1,11 @@
+{
+  "page": "Structures-and-Records",
+  "collapse": [
+    {
+      "start": "b0",
+      "end": "b1",
+      "summary": "inductive types as foundation; structures as one-constructor inductives with projections",
+      "startsWith": "We have seen that Lean's foundational sy"
+    }
+  ]
+}
