@@ -19,8 +19,9 @@ tuned for a reader who already knows dependent type theory and Rocq.
   The book has 91 drills, each one a short example to rewrite from Franklin-style hints. Each
   hint gives the sense of a step without its syntax. A panel at the end of each section lists that
   section's drills. Starting one blurs the book's code ("closing the book"), and you write your
-  version in a live editor. **Compare with the book** then shows a diff against the original, and
-  you grade yourself. Grades schedule the drill's next review (10 min, then 1, 3, 7, 21 and 60
+  version in a live editor. **Compare with the book** opens the book and shows a diff against the
+  original. The diff updates as you keep editing, and **Hide comparison** closes the book again
+  without leaving the drill. When you're done, you grade yourself. Grades schedule the drill's next review (10 min, then 1, 3, 7, 21 and 60
   days), and the **Franklin drill deck** (`drills/`, linked from the table of contents) collects
   what is due. That delay is where the method gets its effect.
 

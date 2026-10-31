@@ -204,13 +204,24 @@ export function drillCard(drill, session, { showWhere = false, closesBook = true
     }
     editorBox.append(bar, editorHost);
     const result = el("div", "tpil-drill-result");
+    const comparisonBox = el("div");
     const actions = el("div", "tpil-drill-actions");
     const compare = button("Compare with the book", "Open the book: show the original next to your version",
-      () => showComparison(), "tpil-primary");
+      () => (comparing ? hideComparison() : showComparison()), "tpil-primary");
     const cancel = button("Put away", "Stop this drill without grading it", () => close());
     actions.append(compare, cancel);
     body.append(hints, editorBox, actions, result);
     card.append(body);
+
+    // While the comparison is showing, it follows the editor: each edit and each new verdict
+    // from Lean redraws it.
+    let comparing = false;
+    let redrawTimer = null;
+    const redraw = () => {
+      if (!comparing) return;
+      clearTimeout(redrawTimer);
+      redrawTimer = setTimeout(() => comparisonBox.replaceChildren(comparison(drill, editor.text, status)), 100);
+    };
 
     editor = new LeanEditor({
       host: editorHost,
@@ -224,22 +235,37 @@ export function drillCard(drill, session, { showWhere = false, closesBook = true
         status = s;
         statusText.textContent = describeAttempt(s);
         statusText.className = `tpil-status ${statusClass(s)}`;
+        redraw();
       },
+      onChange: redraw,
     });
     editor.start();
     editor.view.focus();
 
     function showComparison() {
       if (closesBook) openBook();
-      compare.hidden = true;
-      result.replaceChildren(comparison(drill, editor.text, status), gradeBar());
+      comparing = true;
+      compare.textContent = "Hide comparison";
+      compare.title = "Close the book again and keep working from the hints";
+      comparisonBox.replaceChildren(comparison(drill, editor.text, status));
+      result.replaceChildren(comparisonBox, gradeBar());
+    }
+
+    /** Hides the comparison and closes the book again; the drill stays open. */
+    function hideComparison() {
+      if (closesBook) closeBook();
+      comparing = false;
+      clearTimeout(redrawTimer);
+      compare.textContent = "Compare with the book";
+      compare.title = "Open the book: show the original next to your version";
+      result.replaceChildren();
+      editor.view.focus();
     }
 
     /** Puts the drill away, ungraded. The attempt so far is kept for next time. */
     function close() {
-      if (closesBook && compare.hidden === false) openBook();
-      result.replaceChildren();
-      compare.hidden = false;
+      if (comparing) hideComparison();
+      if (closesBook) openBook();
       body.hidden = true;
       start.hidden = false;
     }
@@ -250,11 +276,8 @@ export function drillCard(drill, session, { showWhere = false, closesBook = true
       for (const { id, label, title: t } of GRADES) {
         g.append(button(label, t, () => {
           grade(drill.id, id);
+          close();
           editor.reset();
-          result.replaceChildren();
-          compare.hidden = false;
-          body.hidden = true;
-          start.hidden = false;
           start.textContent = "Drill again";
           refreshSchedule();
           onGraded?.(drill, id);

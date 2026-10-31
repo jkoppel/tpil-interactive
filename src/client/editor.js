@@ -113,6 +113,7 @@ export class LeanEditor {
    * @param {string} o.post hidden code after the editor's text
    * @param {string} o.storageKey where edits are saved
    * @param {(s: object) => void} o.onStatus called with { state, errors, sorries }
+   * @param {() => void} [o.onChange] called after each edit
    */
   constructor(o) {
     Object.assign(this, o);
@@ -201,6 +202,7 @@ export class LeanEditor {
 
   onUpdate(u) {
     if (u.docChanged) {
+      this.onChange?.();
       try {
         if (this.text === this.initial) localStorage.removeItem(this.storageKey);
         else localStorage.setItem(this.storageKey, this.text);
